@@ -1,12 +1,26 @@
-import { FC, FormEvent, useState } from 'react';
+import { Dispatch, FC, FormEvent, SetStateAction, useState } from 'react';
 import Button, { ButtonType } from '../button/Button';
 import FormInput from '../form-input/FormInput';
+import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { StyledLoginForm } from './LoginForm.styled';
 
-const LoginForm: FC<{}> = () => {
+interface IProps {
+	setCurrentForm: Dispatch<SetStateAction<string>>;
+}
+
+const LoginForm: FC<IProps> = ({ setCurrentForm }) => {
 	const [nin, setNin] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(false);
+
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
+		setLoading(true);
+
+		// TODO: API calls to the backend
+		setTimeout(() => {
+			setLoading(false);
+			setCurrentForm('otp-form');
+		}, 2000);
 	};
 
 	return (
@@ -23,7 +37,7 @@ const LoginForm: FC<{}> = () => {
 			/>
 
 			<Button type={ButtonType.SUBMIT} block>
-				Login
+				{loading ? <LoadingSpinner /> : 'Login'}
 			</Button>
 		</StyledLoginForm>
 	);

@@ -21,5 +21,8 @@ export const StyledLoginForm = styled.form`
 	button {
 		margin-top: 1.8rem;
 		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 `;

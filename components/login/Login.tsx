@@ -1,10 +1,13 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import onboardingImage1 from '../../public/images/onboarding-1.png';
 import LoginForm from '../login-form/LoginForm';
+import OtpForm from '../otp-form/OtpForm';
 import { StyledLogin } from './Login.styled';
 
 const LoginPage: FC<{}> = () => {
+	const [currentForm, setCurrentForm] = useState<string>('login-form');
+
 	return (
 		<StyledLogin>
 			<div className='mf-login-row'>
@@ -20,7 +23,11 @@ const LoginPage: FC<{}> = () => {
 				</div>
 
 				<div className='col-2'>
-					<LoginForm />
+					{currentForm === 'login-form' ? (
+						<LoginForm setCurrentForm={setCurrentForm} />
+					) : (
+						<OtpForm />
+					)}
 				</div>
 			</div>
 		</StyledLogin>
