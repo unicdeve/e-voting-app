@@ -22,3 +22,10 @@ a {
 	max-width: 1212px;
 	margin: 0 auto;
 }
+
+.vote-btn {
+	width: fit-content;
+	padding: 10px 20px;
+	border-radius: 40px !important;
+	cursor: pointer;
+}
