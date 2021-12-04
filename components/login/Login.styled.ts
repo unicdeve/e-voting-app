@@ -34,7 +34,6 @@ export const StyledLogin = styled.div`
 		.mf-login-row {
 			display: block;
 			box-shadow: none;
-			background: #fafcfe;
 
 			.col-1 {
 				display: none;

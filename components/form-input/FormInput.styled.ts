@@ -6,6 +6,7 @@ export const StyledFormInput = styled.div`
 
 	label {
 		margin-bottom: 1rem;
+		font-size: 14px;
 	}
 
 	input {
@@ -13,5 +14,10 @@ export const StyledFormInput = styled.div`
 		border: 1px solid #dfdfdf;
 		border-radius: 8px;
 		padding: 12px 16px;
+
+		&:focus {
+			outline: none;
+			border: 1px solid #dfdfdf;
+		}
 	}
 `;

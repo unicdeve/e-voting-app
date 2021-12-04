@@ -8,6 +8,8 @@ interface IProps {
 	name: string;
 	maxLength?: number;
 	placeholder?: string;
+	value: string;
+	onChange: (e: any) => void;
 }
 
 const FormInput: FC<IProps> = ({
@@ -17,16 +19,20 @@ const FormInput: FC<IProps> = ({
 	name,
 	maxLength,
 	placeholder,
+	value,
+	onChange,
 }) => {
 	return (
-		<StyledFormInput>
-			{label ? <label>{label}</label> : null}
+		<StyledFormInput className={className}>
+			{label ? <label htmlFor={name}>{label}</label> : null}
 			<input
+				id={name}
 				type={type}
 				maxLength={maxLength}
 				placeholder={placeholder}
 				name={name}
-				className={className}
+				value={value}
+				onChange={onChange}
 			/>
 		</StyledFormInput>
 	);
