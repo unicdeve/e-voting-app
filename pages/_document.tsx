@@ -43,7 +43,7 @@ class MyCustomDocument extends Document {
 				<Head>
 					{this.props.styles}
 					<link
-						href='https://fonts.googleapis.com/css2?family=Inter&display=optional'
+						href='https://fonts.googleapis.com/css2?family=Noto+Sans&display=optional'
 						rel='stylesheet'
 					/>
 				</Head>
