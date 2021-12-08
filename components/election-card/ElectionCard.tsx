@@ -12,9 +12,10 @@ interface IProps {
 	image: any;
 	title: string;
 	type: ElectionType;
+	onButtonClicked: () => void;
 }
 
-const ElectionCard: FC<IProps> = ({ image, title, type }) => {
+const ElectionCard: FC<IProps> = ({ image, title, type, onButtonClicked }) => {
 	return (
 		<StyledElectionCard>
 			<div className='image'>
@@ -38,6 +39,7 @@ const ElectionCard: FC<IProps> = ({ image, title, type }) => {
 					}`}
 					block={false}
 					disabled={type === ElectionType.UPCOMING}
+					onClick={() => onButtonClicked()}
 				>
 					{type === ElectionType.UPCOMING ? 'Coming soon' : 'Cast Vote'}
 				</Button>

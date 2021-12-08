@@ -22,7 +22,7 @@ const OtpForm: FC<IProps> = ({ disabled }) => {
 		// TODO: API calls to the backend
 		setTimeout(() => {
 			setLoading(false);
-			router.replace('/home');
+			router.push('/home');
 		}, 2000);
 	};
 

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { StyledButton } from './Button.styled';
 
 export enum ButtonType {
@@ -14,6 +14,7 @@ interface IProps {
 	title?: string;
 	disabled?: boolean;
 	block?: boolean;
+	onClick?: MouseEventHandler<HTMLElement>;
 }
 
 const Button: FC<IProps> = ({
@@ -24,6 +25,7 @@ const Button: FC<IProps> = ({
 	title,
 	block,
 	disabled,
+	onClick,
 }) => {
 	const classNames = [className, block ? 'block' : '']
 		.filter(Boolean)
@@ -35,6 +37,7 @@ const Button: FC<IProps> = ({
 			className={classNames}
 			type={type}
 			disabled={disabled}
+			onClick={onClick}
 		>
 			{children ? children : btnText}
 		</StyledButton>
