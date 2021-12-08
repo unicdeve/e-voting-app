@@ -12,6 +12,7 @@ interface IProps {
 	className?: string;
 	btnText?: string;
 	title?: string;
+	disabled?: boolean;
 	block?: boolean;
 }
 
@@ -22,13 +23,19 @@ const Button: FC<IProps> = ({
 	btnText,
 	title,
 	block,
+	disabled,
 }) => {
 	const classNames = [className, block ? 'block' : '']
 		.filter(Boolean)
 		.join(' ');
 
 	return (
-		<StyledButton title={title} className={classNames} type={type}>
+		<StyledButton
+			title={title}
+			className={classNames}
+			type={type}
+			disabled={disabled}
+		>
 			{children ? children : btnText}
 		</StyledButton>
 	);
