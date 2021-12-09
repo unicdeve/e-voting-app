@@ -8,7 +8,7 @@ const HomePage: FC<{}> = () => {
 	const router = useRouter();
 
 	const onButtonClicked = (id: number) => {
-		router.push(`/election/${id}`);
+		router.push({ pathname: `/election/${id}` });
 	};
 
 	return (
