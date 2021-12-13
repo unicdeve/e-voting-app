@@ -1,54 +1,36 @@
 import { useRouter } from 'next/router';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { IElectionCandidates } from '../../mocks/election';
 import CandidateCard from '../cardidate-card/CandidateCard';
-import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { StyledElection } from './Election.styled';
 
-interface IQuery {
-	id?: string;
-}
-
 interface IProps {
-	electionCandidates: IElectionCandidates[];
+	electionCandidate: IElectionCandidates | undefined;
 }
 
-const ElectionPage: FC<IProps> = ({ electionCandidates }) => {
+const ElectionPage: FC<IProps> = ({ electionCandidate }) => {
 	const router = useRouter();
-	const { id } = router.query as IQuery;
-	const [data, setData] = useState<IElectionCandidates | undefined>(undefined);
-	const [loading, setLoading] = useState<boolean>(false);
 
-	useEffect(() => {
-		setLoading(true);
+	const onButtonClicked = (id: number) => {
+		router.push({ pathname: `/vote/${electionCandidate?.id}/${id}` });
+	};
 
-		if (id) {
-			const election = electionCandidates.find(
-				(el) => el.id === parseInt(id, 20)
-			);
-
-			if (!election) router.push('/home');
-			setData(election);
-		}
-
-		setLoading(false);
-	}, [id, router, electionCandidates]);
-
-	if (loading || !data) {
-		return <LoadingSpinner />;
+	if (!electionCandidate) {
+		return <h1>No election found</h1>;
 	}
 
 	return (
 		<StyledElection>
-			<h2 className='h2'>{data?.title}</h2>
+			<h2 className='h2'>{electionCandidate.title}</h2>
 			<p>Choose your preferred candidate below</p>
 			<div className='candidates'>
-				{data.candidates.map(({ id, name, image, partyImage }) => (
+				{electionCandidate.candidates.map(({ id, name, image, partyImage }) => (
 					<CandidateCard
 						key={id}
 						name={name}
 						image={image}
 						partyImage={partyImage}
+						onButtonClicked={() => onButtonClicked(id)}
 					/>
 				))}
 			</div>

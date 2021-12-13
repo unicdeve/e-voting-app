@@ -36,7 +36,6 @@ const CandidateCard: FC<IProps> = ({
 					alt={`${name}'s party`}
 					src={partyImage}
 					objectFit='cover'
-					placeholder='blur'
 					width='44'
 					height='33'
 				/>
