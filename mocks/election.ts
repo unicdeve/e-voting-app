@@ -6,7 +6,7 @@ import pdpImage from '../public/images/party-images/1.png';
 import apcImage from '../public/images/party-images/2.png';
 import otherImage from '../public/images/party-images/3.png';
 
-interface ICandidate {
+export interface ICandidate {
 	id: number;
 	name: string;
 	image: any;
@@ -53,14 +53,14 @@ export const electionCandidates: IElectionCandidates[] = [
 		candidates: [
 			{
 				id: 1,
-				name: 'Mr Something something',
+				name: 'Mr Timilehin Gbenga',
 				image: candidate1,
 				partyImage: pdpImage,
 			},
 
 			{
 				id: 2,
-				name: 'Mr Something something',
+				name: 'Dr Ikechukwu James',
 				image: candidate2,
 				partyImage: apcImage,
 			},
@@ -81,21 +81,21 @@ export const electionCandidates: IElectionCandidates[] = [
 		candidates: [
 			{
 				id: 1,
-				name: 'Mr Something something',
+				name: 'Mr Taiwo Segun',
 				image: candidate1,
 				partyImage: pdpImage,
 			},
 
 			{
 				id: 2,
-				name: 'Mr Something something',
+				name: 'Mr Kehinde Olaposi',
 				image: candidate2,
 				partyImage: apcImage,
 			},
 
 			{
 				id: 3,
-				name: 'Mr Something something',
+				name: 'Dr Bola Ige',
 				image: candidate3,
 				partyImage: otherImage,
 			},
