@@ -1,8 +1,17 @@
-import type { NextPage } from 'next';
+import type { NextPage, NextPageContext } from 'next';
 import ElectionPage from '../../components/election/Election';
+import { electionCandidates, IElectionCandidates } from '../../mocks/election';
 
-const Election: NextPage = () => {
-	return <ElectionPage />;
+interface IProps {
+	electionCandidates: IElectionCandidates[];
+}
+
+const Election: NextPage<IProps> = ({ electionCandidates }) => {
+	return <ElectionPage electionCandidates={electionCandidates} />;
+};
+
+Election.getInitialProps = async (context: NextPageContext) => {
+	return { electionCandidates };
 };
 
 export default Election;
